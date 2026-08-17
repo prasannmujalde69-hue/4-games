@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Flappy Bird | Game Hub</title>
+
+    <!-- FLAPPY BIRD CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/flappy-bird.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         NAVBAR
+    =========================================== -->
+
+    <header class="navbar">
+
+        <a
+            href="../index.html"
+            class="logo"
+        >
+            🎮 Game Hub
+        </a>
+
+
+        <a
+            href="../index.html"
+            class="back-btn"
+        >
+            ← Back to Games
+        </a>
+
+    </header>
+
+
+    <!-- ==========================================
+         GAME PAGE
+    =========================================== -->
+
+    <main class="game-page">
+
+
+        <!-- ======================================
+             GAME HEADER
+        ======================================= -->
+
+        <section class="game-header">
+
+            <div>
+
+                <p class="game-label">
+                    GAME HUB
+                </p>
+
+                <h1>
+                    Flappy Bird 🐦
+                </h1>
+
+                <p class="description">
+                    Fly through the pipes
+                    and beat your high score.
+                </p>
+
+            </div>
+
+
+            <!-- SCORE -->
+
+            <div class="score-container">
+
+                <div class="score-box">
+
+                    <span>
+                        SCORE
+                    </span>
+
+                    <strong id="score">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="score-box">
+
+                    <span>
+                        BEST
+                    </span>
+
+                    <strong id="best">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             NEW GAME BUTTON
+        ======================================= -->
+
+        <div class="controls">
+
+            <button id="newGame">
+                New Game
+            </button>
+
+        </div>
+
+
+        <!-- ======================================
+             FLAPPY BIRD GAME
+        ======================================= -->
+
+        <div class="flappy-container">
+
+
+            <!-- CANVAS -->
+
+            <canvas
+                id="flappyCanvas"
+                width="480"
+                height="640"
+            ></canvas>
+
+
+            <!-- ==================================
+                 START SCREEN
+            =================================== -->
+
+            <div
+                class="start-screen"
+                id="startScreen"
+            >
+
+                <div class="bird-icon">
+                    🐦
+                </div>
+
+
+                <h2>
+                    Flappy Bird
+                </h2>
+
+
+                <p>
+                    Tap, click or press
+                    <strong>SPACE</strong>
+                    to fly.
+                </p>
+
+
+                <button id="startButton">
+                    Start Game
+                </button>
+
+            </div>
+
+
+            <!-- ==================================
+                 GAME OVER
+            =================================== -->
+
+            <div
+                class="game-over"
+                id="gameOver"
+            >
+
+                <div class="bird-icon">
+                    💥
+                </div>
+
+
+                <h2>
+                    Game Over!
+                </h2>
+
+
+                <p>
+                    Score:
+                    <strong id="finalScore">
+                        0
+                    </strong>
+                </p>
+
+
+                <button id="restartButton">
+                    Play Again
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             INSTRUCTIONS
+        ======================================= -->
+
+        <section class="instructions">
+
+            <h2>
+                How to Play
+            </h2>
+
+
+            <p>
+                Press
+                <strong>SPACE</strong>,
+                click or tap the screen
+                to make the bird fly.
+            </p>
+
+
+            <p>
+                Avoid the pipes and
+                don't hit the ground.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==========================================
+         FLAPPY BIRD JAVASCRIPT
+    =========================================== -->
+
+    <script src="../js/flappy-bird.js"></script>
+
+</body>
+
+</html>

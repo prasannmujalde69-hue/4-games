@@ -1,0 +1,695 @@
+/* ==========================================
+   2048 - GAME PAGE
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #080b14;
+
+    color: white;
+}
+
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar {
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    background:
+        rgba(8, 11, 20, 0.92);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    backdrop-filter: blur(15px);
+
+}
+
+.logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+}
+
+.back-btn {
+
+    color: #858da0;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+
+}
+
+.back-btn:hover {
+
+    color: white;
+
+}
+
+
+/* ==========================================
+   MAIN
+========================================== */
+
+.game-page {
+
+    width: min(850px, 92%);
+
+    margin: auto;
+
+    padding:
+        55px 0 90px;
+
+}
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.game-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+
+}
+
+.game-label {
+
+    color: #718aff;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+
+}
+
+.game-header h1 {
+
+    font-size: 52px;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 10px;
+
+}
+
+.description {
+
+    color: #7e8799;
+
+    font-size: 14px;
+
+}
+
+
+/* ==========================================
+   SCORE
+========================================== */
+
+.score-container {
+
+    display: flex;
+
+    gap: 8px;
+
+}
+
+.score-box {
+
+    min-width: 85px;
+
+    padding: 11px 15px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    background: #121827;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.07);
+
+}
+
+.score-box span {
+
+    display: block;
+
+    color: #727b8d;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 4px;
+
+}
+
+.score-box strong {
+
+    font-size: 20px;
+
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.controls {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: 12px;
+
+}
+
+#newGame {
+
+    border: none;
+
+    padding: 11px 18px;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #477cff,
+            #805cff
+        );
+
+    color: white;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+#newGame:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(71,124,255,0.25);
+
+}
+
+
+/* ==========================================
+   BOARD
+========================================== */
+
+.board {
+
+    position: relative;
+
+    width: min(520px, 100%);
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto;
+
+    padding: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    grid-template-rows:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    border-radius: 18px;
+
+    background: #252e43;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 30px 70px
+        rgba(0,0,0,0.35);
+
+}
+
+
+/* ==========================================
+   EMPTY TILES
+========================================== */
+
+.tile {
+
+    min-width: 0;
+
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #30394d;
+
+    color: white;
+
+    font-size: 34px;
+
+    font-weight: 850;
+
+    line-height: 1;
+
+    overflow: hidden;
+
+}
+
+
+/* ==========================================
+   TILE COLORS
+========================================== */
+
+.tile-0 {
+
+    background: #30394d;
+
+    color: transparent;
+
+}
+
+.tile-2 {
+
+    background: #566078;
+
+}
+
+.tile-4 {
+
+    background: #65718c;
+
+}
+
+.tile-8 {
+
+    background: #ba7651;
+
+}
+
+.tile-16 {
+
+    background: #d16b48;
+
+}
+
+.tile-32 {
+
+    background: #dc573d;
+
+}
+
+.tile-64 {
+
+    background: #e23e36;
+
+}
+
+.tile-128 {
+
+    background: #c59a42;
+
+    font-size: 28px;
+
+}
+
+.tile-256 {
+
+    background: #b58b3b;
+
+    font-size: 28px;
+
+}
+
+.tile-512 {
+
+    background: #a77c32;
+
+    font-size: 28px;
+
+}
+
+.tile-1024 {
+
+    background: #956d2d;
+
+    font-size: 22px;
+
+    letter-spacing: -1px;
+
+}
+
+.tile-2048 {
+
+    background:
+        linear-gradient(
+            135deg,
+            #6e8cff,
+            #a35cff
+        );
+
+    font-size: 22px;
+
+    letter-spacing: -1px;
+
+    box-shadow:
+        0 0 25px
+        rgba(110,140,255,0.35);
+
+}
+
+
+/* ==========================================
+   GAME OVER
+========================================== */
+
+.game-over {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(8,11,20,0.82);
+
+    backdrop-filter: blur(6px);
+
+}
+
+.game-over.show {
+
+    display: flex;
+
+}
+
+.game-over h2 {
+
+    font-size: 34px;
+
+}
+
+.game-over button {
+
+    padding: 12px 22px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #477cff,
+            #805cff
+        );
+
+    color: white;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+}
+
+
+/* ==========================================
+   INSTRUCTIONS
+========================================== */
+
+.instructions {
+
+    width: min(600px, 100%);
+
+    margin: 30px auto 0;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    background: #101624;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.06);
+
+    text-align: center;
+
+}
+
+.instructions h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 12px;
+
+}
+
+.instructions p {
+
+    color: #747d90;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    margin-top: 5px;
+
+}
+
+.instructions strong {
+
+    color: #b4bdd0;
+
+}
+
+
+/* ==========================================
+   MOBILE CONTROLS
+========================================== */
+
+.mobile-controls {
+
+    margin-top: 25px;
+
+    display: none;
+
+}
+
+.mobile-controls button {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: 3px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #252e43;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+}
+
+.mobile-controls button:active {
+
+    transform: scale(0.92);
+
+    background: #477cff;
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+
+    .navbar {
+
+        padding: 0 5%;
+
+    }
+
+    .game-page {
+
+        width: 92%;
+
+        padding-top: 40px;
+
+    }
+
+    .game-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+    .game-header h1 {
+
+        font-size: 42px;
+
+    }
+
+    .score-container {
+
+        width: 100%;
+
+    }
+
+    .score-box {
+
+        flex: 1;
+
+    }
+
+    .controls {
+
+        justify-content: center;
+
+    }
+
+    .board {
+
+        padding: 8px;
+
+        gap: 6px;
+
+        border-radius: 14px;
+
+    }
+
+    .tile {
+
+        border-radius: 7px;
+
+        font-size: 25px;
+
+    }
+
+    .tile-128,
+    .tile-256,
+    .tile-512 {
+
+        font-size: 21px;
+
+    }
+
+    .tile-1024,
+    .tile-2048 {
+
+        font-size: 17px;
+
+    }
+
+    .mobile-controls {
+
+        display: block;
+
+    }
+
+}

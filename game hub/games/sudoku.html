@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sudoku | Game Hub</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/sudoku.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="../index.html" class="logo">
+            🎮 Game Hub
+        </a>
+
+        <a href="../index.html" class="back-btn">
+            ← Back to Games
+        </a>
+
+    </header>
+
+
+    <!-- GAME -->
+
+    <main class="game-page">
+
+        <section class="game-header">
+
+            <div>
+
+                <p class="game-label">
+                    GAME HUB
+                </p>
+
+                <h1>Sudoku 🧩</h1>
+
+                <p class="description">
+                    Fill the grid and test your logic.
+                </p>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div class="stat-box">
+
+                    <span>TIME</span>
+
+                    <strong id="timer">
+                        00:00
+                    </strong>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <span>MISTAKES</span>
+
+                    <strong id="mistakes">
+                        0/3
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROLS -->
+
+        <div class="top-controls">
+
+            <button id="newGame">
+                New Game
+            </button>
+
+        </div>
+
+
+        <!-- SUDOKU BOARD -->
+
+        <div
+            class="sudoku-board"
+            id="sudokuBoard"
+        ></div>
+
+
+        <!-- NUMBER PAD -->
+
+        <div class="number-pad">
+
+            <button data-number="1">1</button>
+            <button data-number="2">2</button>
+            <button data-number="3">3</button>
+            <button data-number="4">4</button>
+            <button data-number="5">5</button>
+            <button data-number="6">6</button>
+            <button data-number="7">7</button>
+            <button data-number="8">8</button>
+            <button data-number="9">9</button>
+
+            <button
+                class="erase"
+                data-number="0"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            class="message"
+            id="message"
+        ></div>
+
+
+        <!-- INSTRUCTIONS -->
+
+        <section class="instructions">
+
+            <h2>
+                How to Play
+            </h2>
+
+            <p>
+                Fill every row, column and 3×3 box
+                with numbers from 1 to 9.
+            </p>
+
+            <p>
+                Each number can appear only once
+                in each row, column and box.
+            </p>
+
+            <p>
+                You have
+                <strong>3 mistakes</strong>
+                before the game ends.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/sudoku.js"></script>
+
+</body>
+
+</html>
